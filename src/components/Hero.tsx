@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center pt-16 bg-gradient-to-b from-sht-light-blue to-white overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-sht-light-blue to-white overflow-hidden"
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       
