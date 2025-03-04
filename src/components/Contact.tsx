@@ -76,8 +76,8 @@ const Contact = () => {
                   <div className="ml-4">
                     <h4 className="text-lg font-medium">Our Location</h4>
                     <p className="text-muted-foreground">
-                      123 Technology Park, Chennai<br />
-                      Tamil Nadu, India - 600001
+                      No. 1E/52, Chinnakannupuram,<br />
+                      Tuticorin - 628 002, Tamil Nadu, India
                     </p>
                   </div>
                 </div>
@@ -89,8 +89,7 @@ const Contact = () => {
                   <div className="ml-4">
                     <h4 className="text-lg font-medium">Phone Number</h4>
                     <p className="text-muted-foreground">
-                      +91 44 1234 5678<br />
-                      +91 98765 43210
+                      +91 87601 87309
                     </p>
                   </div>
                 </div>
@@ -102,18 +101,17 @@ const Contact = () => {
                   <div className="ml-4">
                     <h4 className="text-lg font-medium">Email Address</h4>
                     <p className="text-muted-foreground">
-                      info@shtinfotech.com<br />
-                      support@shtinfotech.com
+                      shtinfotech@gmail.com
                     </p>
                   </div>
                 </div>
               </div>
             </div>
             
-            {/* Google Maps Embed */}
+            {/* Google Maps Embed - Updated to point to Tuticorin */}
             <div className="w-full h-80 rounded-2xl overflow-hidden shadow-sm border border-sht-blue/10">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248756.1167529336!2d80.06323372211518!3d13.04762755596424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52689fd353704b%3A0x2b12c048a726baf4!2sChennai%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sus!4v1683569893635!5m2!1sen!2sus" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126573.04217798228!2d78.07199509023435!3d8.764670199999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b03ee67b8f12823%3A0x39a87fbcc63067f6!2sTuticorin%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1711366898061!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 

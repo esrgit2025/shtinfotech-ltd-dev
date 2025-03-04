@@ -9,7 +9,10 @@ const Hero = () => {
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       
-      <div className="section-container flex flex-col items-center justify-center text-center">
+      {/* Investment background overlay */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center opacity-10"></div>
+      
+      <div className="section-container flex flex-col items-center justify-center text-center z-10">
         <div className="animate-fade-in">
           <img 
             src="/lovable-uploads/4a9b5e54-debf-4c11-a116-9087210299b7.png" 
@@ -25,19 +28,23 @@ const Hero = () => {
             Empowering Technology Since 1987
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="#about" 
-              className="px-6 py-3 bg-sht-blue text-white rounded-full font-medium hover:bg-sht-dark-blue transition-colors shadow-md hover:shadow-xl"
-            >
-              Learn More
-            </a>
-            <a 
-              href="#contact" 
-              className="px-6 py-3 bg-white text-sht-blue border border-sht-blue rounded-full font-medium hover:bg-sht-light-blue transition-colors"
-            >
-              Get in Touch
-            </a>
+          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg max-w-2xl mx-auto shadow-xl">
+            <h2 className="text-2xl font-semibold text-sht-blue mb-3">Investment Opportunity</h2>
+            <p className="text-lg mb-4">Join our growing company with shares valued at ₹555 across five diversified business divisions.</p>
+            <div className="flex items-center justify-center gap-4 flex-wrap">
+              <div className="bg-sht-light-blue p-3 rounded-lg">
+                <span className="font-bold text-sht-blue">₹20,000,000</span>
+                <p className="text-sm">Company Value</p>
+              </div>
+              <div className="bg-sht-light-blue p-3 rounded-lg">
+                <span className="font-bold text-sht-blue">₹555</span>
+                <p className="text-sm">Per Share</p>
+              </div>
+              <div className="bg-sht-light-blue p-3 rounded-lg">
+                <span className="font-bold text-sht-blue">5</span>
+                <p className="text-sm">Business Divisions</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

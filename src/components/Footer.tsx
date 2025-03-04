@@ -7,15 +7,17 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-sht-dark-blue to-sht-blue text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Logo and about */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
-              <img 
-                src="/lovable-uploads/4a9b5e54-debf-4c11-a116-9087210299b7.png" 
-                alt="SHT Infotech Logo" 
-                className="h-10 bg-white p-1 rounded-md"
-              />
+              <a href="https://shtinfotech.in/" target="_blank" rel="noopener noreferrer">
+                <img 
+                  src="/lovable-uploads/4a9b5e54-debf-4c11-a116-9087210299b7.png" 
+                  alt="SHT Infotech Logo" 
+                  className="h-10 bg-white p-1 rounded-md"
+                />
+              </a>
               <span className="ml-2 text-xl font-semibold">SHT Infotech</span>
             </div>
             <p className="text-white/80 mb-4">
@@ -36,31 +38,6 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
             </div>
-          </div>
-          
-          {/* Quick links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#home" className="text-white/80 hover:text-white transition-colors">Home</a>
-              </li>
-              <li>
-                <a href="#about" className="text-white/80 hover:text-white transition-colors">About Us</a>
-              </li>
-              <li>
-                <a href="#services" className="text-white/80 hover:text-white transition-colors">Services</a>
-              </li>
-              <li>
-                <a href="#timeline" className="text-white/80 hover:text-white transition-colors">Timeline</a>
-              </li>
-              <li>
-                <a href="#investment" className="text-white/80 hover:text-white transition-colors">Investment</a>
-              </li>
-              <li>
-                <a href="#contact" className="text-white/80 hover:text-white transition-colors">Contact</a>
-              </li>
-            </ul>
           </div>
           
           {/* Business Divisions */}
