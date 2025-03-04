@@ -17,7 +17,7 @@ const Hero = () => {
           <img 
             src="/lovable-uploads/4a9b5e54-debf-4c11-a116-9087210299b7.png" 
             alt="SHT Infotech Logo" 
-            className="w-60 md:w-72 lg:w-96 mb-8 animate-pulse-light"
+            className="w-72 md:w-96 lg:w-[500px] mb-10 animate-pulse-light mx-auto"
           />
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-sht-dark-blue to-sht-blue bg-clip-text text-transparent">

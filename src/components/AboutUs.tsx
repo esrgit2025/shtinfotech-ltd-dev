@@ -16,8 +16,8 @@ const AboutUs = () => {
               <Building className="text-sht-blue mb-4" size={32} />
               <h3 className="text-xl font-semibold mb-2">Our Foundation</h3>
               <p className="text-muted-foreground">
-                Founded in 1987 by Mr. Emerson Irudayaraj as Sacred Heart Technologies, 
-                we began our journey by offering AMIE courses in Mechanical, Civil, EEE, and ECE, 
+                Founded in 1987 by <span className="font-bold text-sht-blue">Mr. Emerson Irudayaraj, CEO of SHT Infotech P Ltd</span>, 
+                as Sacred Heart Technologies, we began our journey by offering AMIE courses in Mechanical, Civil, EEE, and ECE, 
                 successfully nurturing over 5,000 students toward their professional goals.
               </p>
             </div>
