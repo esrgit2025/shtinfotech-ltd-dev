@@ -112,4 +112,52 @@
   .section-padding {
     @apply py-16 md:py-24;
   }
+
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(0, 112, 243, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 112, 243, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .animate-float {
+    animation: float 2s ease-in-out infinite;
+  }
+
+  .animate-pulse-light {
+    animation: pulse-light 3s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(-50%);
+    }
+    50% {
+      transform: translateY(-10px) translateX(-50%);
+    }
+  }
+
+  @keyframes pulse-light {
+    0%, 100% {
+      filter: drop-shadow(0 0 15px rgba(0, 112, 243, 0.2));
+    }
+    50% {
+      filter: drop-shadow(0 0 30px rgba(0, 112, 243, 0.4));
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

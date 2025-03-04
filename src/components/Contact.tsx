@@ -1,22 +1,32 @@
 
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { toast } from 'sonner';
+import { useState, useRef, useEffect } from 'react';
+import { MapPin, Phone, Mail, Send, Check } from 'lucide-react';
+import { toast } from '../components/ui/use-toast';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
-
+  const contactRef = useRef<HTMLDivElement>(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  useEffect(() => {
+    const checkScroll = () => {
+      if (contactRef.current) {
+        const contactRect = contactRef.current.getBoundingClientRect();
+        if (contactRect.top < window.innerHeight * 0.75) {
+          contactRef.current.classList.add('active');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', checkScroll);
+    checkScroll(); // Check on mount
+
+    return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,158 +34,187 @@ const Contact = () => {
     
     // Simulate form submission
     setTimeout(() => {
-      toast.success('Thank you for your message! We will get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-      });
       setIsSubmitting(false);
+      setSubmitted(true);
+      
+      toast({
+        title: "Message Sent Successfully",
+        description: "Thank you for contacting us. We'll get back to you soon!",
+        duration: 5000,
+      });
+      
+      // Reset form
+      setName('');
+      setEmail('');
+      setPhone('');
+      setMessage('');
+      
+      // Reset submitted state after some time
+      setTimeout(() => setSubmitted(false), 3000);
     }, 1500);
   };
 
   return (
-    <section id="contact" className="section-padding bg-white">
+    <section id="contact" className="section-padding bg-gradient-to-b from-sht-light-blue to-white">
       <div className="section-container">
-        <div className="mb-16">
+        <div className="mb-12">
           <h2 className="section-title">Contact Us</h2>
-          <p className="section-subtitle">Reach out to us for inquiries, partnerships, or services</p>
+          <p className="section-subtitle">Get in touch with our team for inquiries and collaboration opportunities</p>
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact form */}
-          <div className="bg-white rounded-xl shadow-lg p-8 border border-sht-blue/10">
-            <h3 className="text-2xl font-semibold mb-6">Get In Touch</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sht-blue focus:border-transparent outline-none transition-all"
-                  placeholder="Your name"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sht-blue focus:border-transparent outline-none transition-all"
-                  placeholder="you@example.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sht-blue focus:border-transparent outline-none transition-all"
-                  placeholder="Your phone number"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sht-blue focus:border-transparent outline-none transition-all resize-none"
-                  placeholder="How can we help you?"
-                />
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-sht-blue text-white rounded-lg font-medium hover:bg-sht-dark-blue transition-colors disabled:opacity-70"
-              >
-                {isSubmitting ? 'Sending...' : (
-                  <>
-                    Send Message
-                    <Send size={18} />
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
-          
-          {/* Map and contact info */}
+        
+        <div ref={contactRef} className="grid lg:grid-cols-2 gap-12 reveal">
+          {/* Contact information */}
           <div className="space-y-8">
-            <div className="bg-white rounded-xl shadow-lg p-8 border border-sht-blue/10">
-              <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
+            <div className="glass-card p-8 rounded-2xl space-y-6">
+              <h3 className="text-2xl font-semibold mb-4">Reach Out to Us</h3>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="flex items-start">
-                  <MapPin className="text-sht-blue mt-1 mr-4" size={20} />
-                  <div>
-                    <h4 className="font-medium">Office Location</h4>
+                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-sht-light-blue flex items-center justify-center text-sht-blue">
+                    <MapPin size={24} />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-lg font-medium">Our Location</h4>
                     <p className="text-muted-foreground">
-                      123 Business Park, Chennai, Tamil Nadu, India
+                      123 Technology Park, Chennai<br />
+                      Tamil Nadu, India - 600001
                     </p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <Mail className="text-sht-blue mt-1 mr-4" size={20} />
-                  <div>
-                    <h4 className="font-medium">Email Address</h4>
-                    <p className="text-muted-foreground">info@shtinfotech.com</p>
+                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-sht-light-blue flex items-center justify-center text-sht-blue">
+                    <Phone size={24} />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-lg font-medium">Phone Number</h4>
+                    <p className="text-muted-foreground">
+                      +91 44 1234 5678<br />
+                      +91 98765 43210
+                    </p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <Phone className="text-sht-blue mt-1 mr-4" size={20} />
-                  <div>
-                    <h4 className="font-medium">Phone Number</h4>
-                    <p className="text-muted-foreground">+91 98765 43210</p>
+                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-sht-light-blue flex items-center justify-center text-sht-blue">
+                    <Mail size={24} />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-lg font-medium">Email Address</h4>
+                    <p className="text-muted-foreground">
+                      info@shtinfotech.com<br />
+                      support@shtinfotech.com
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
             
-            {/* Map */}
-            <div className="bg-white rounded-xl shadow-lg p-4 border border-sht-blue/10">
-              <div className="aspect-video w-full rounded-lg overflow-hidden">
-                <iframe 
-                  title="SHT Infotech Office Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.90089883275!2d79.9288258931192!3d13.047985828350468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1655975865228!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
+            {/* Google Maps Embed */}
+            <div className="w-full h-80 rounded-2xl overflow-hidden shadow-sm border border-sht-blue/10">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248756.1167529336!2d80.06323372211518!3d13.04762755596424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52689fd353704b%3A0x2b12c048a726baf4!2sChennai%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sus!4v1683569893635!5m2!1sen!2sus" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={false} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="SHT Infotech Location"
+              ></iframe>
             </div>
+          </div>
+          
+          {/* Contact form */}
+          <div className="glass-card p-8 rounded-2xl">
+            <h3 className="text-2xl font-semibold mb-6">Send Us a Message</h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
+                  Full Name
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-sht-blue focus:border-transparent"
+                  placeholder="Your full name"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
+                  Email Address
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-sht-blue focus:border-transparent"
+                  placeholder="Your email address"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">
+                  Phone Number
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-sht-blue focus:border-transparent"
+                  placeholder="Your phone number"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  rows={5}
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-sht-blue focus:border-transparent"
+                  placeholder="Type your message here..."
+                  required
+                ></textarea>
+              </div>
+              
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-3 bg-sht-blue text-white rounded-lg font-medium hover:bg-sht-dark-blue transition-colors flex items-center justify-center"
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : submitted ? (
+                  <>
+                    <Check className="mr-2" size={18} />
+                    Sent Successfully
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2" size={18} />
+                    Send Message
+                  </>
+                )}
+              </button>
+            </form>
           </div>
         </div>
       </div>
