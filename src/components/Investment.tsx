@@ -114,7 +114,7 @@ const Investment = () => {
                         outerRadius={90}
                         fill="#8884d8"
                         dataKey="value"
-                        label={({name, percent}) => `${name} ${(percent * 100).toFixed(0)}%`}
+                        label={({name, percent}) => `${name}: ${(percent * 100).toFixed(0)}%`}
                         labelLine={{strokeWidth: 1, stroke: '#333'}}
                       >
                         {data.map((entry, index) => (
@@ -133,7 +133,7 @@ const Investment = () => {
                   {data.map((item, index) => (
                     <div key={index} className="flex items-center">
                       <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: item.color }}></div>
-                      <span className="text-sm">{item.name}: {item.value}%</span>
+                      <span className="text-sm whitespace-nowrap">{item.name}: {item.value}%</span>
                     </div>
                   ))}
                 </div>
