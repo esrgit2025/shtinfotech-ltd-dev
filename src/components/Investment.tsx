@@ -99,7 +99,7 @@ const Investment = () => {
               </div>
             </div>
 
-            {/* Pie chart - Updated for better text visibility */}
+            {/* Pie chart - with labels and pointers removed */}
             <div className="flex justify-center">
               <div className="p-6 bg-white rounded-2xl shadow-sm border border-sht-blue/10 w-full max-w-md">
                 <h3 className="text-xl font-semibold mb-4 text-center">Business Division Allocation</h3>
@@ -110,12 +110,11 @@ const Investment = () => {
                         data={data}
                         cx="50%"
                         cy="50%"
-                        labelLine={true}
                         outerRadius={90}
                         fill="#8884d8"
                         dataKey="value"
-                        label={({name, percent}) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                        labelLine={{strokeWidth: 1, stroke: '#333'}}
+                        label={false}
+                        labelLine={false}
                       >
                         {data.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
