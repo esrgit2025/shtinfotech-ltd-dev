@@ -99,11 +99,11 @@ const Investment = () => {
               </div>
             </div>
 
-            {/* Pie chart */}
+            {/* Pie chart - Updated for better text visibility */}
             <div className="flex justify-center">
               <div className="p-6 bg-white rounded-2xl shadow-sm border border-sht-blue/10 w-full max-w-md">
                 <h3 className="text-xl font-semibold mb-4 text-center">Business Division Allocation</h3>
-                <div className="h-64 md:h-80">
+                <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
@@ -111,18 +111,31 @@ const Investment = () => {
                         cx="50%"
                         cy="50%"
                         labelLine={true}
-                        outerRadius={80}
+                        outerRadius={90}
                         fill="#8884d8"
                         dataKey="value"
-                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                        label={({name, percent}) => `${name} ${(percent * 100).toFixed(0)}%`}
+                        labelLine={{strokeWidth: 1, stroke: '#333'}}
                       >
                         {data.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
-                      <Tooltip formatter={(value) => [`${value}%`, 'Allocation']} />
+                      <Tooltip 
+                        formatter={(value) => [`${value}%`, 'Allocation']}
+                        contentStyle={{ backgroundColor: 'white', borderRadius: '8px', padding: '10px', border: '1px solid #e2e8f0' }}
+                        labelStyle={{ fontWeight: 'bold', marginBottom: '5px' }}
+                      />
                     </PieChart>
                   </ResponsiveContainer>
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-2">
+                  {data.map((item, index) => (
+                    <div key={index} className="flex items-center">
+                      <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: item.color }}></div>
+                      <span className="text-sm">{item.name}: {item.value}%</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
