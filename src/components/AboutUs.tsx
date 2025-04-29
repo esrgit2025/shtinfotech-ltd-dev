@@ -10,9 +10,9 @@ const AboutUs = () => {
           <p className="section-subtitle">Our journey from educational services to a diverse business conglomerate</p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6 h-full flex flex-col">
-            <div className="p-6 bg-gradient-to-br from-sht-light-blue to-white rounded-2xl shadow-sm border border-sht-blue/10 h-full">
+        <div className="grid md:grid-cols-2 gap-12 items-stretch">
+          <div className="space-y-6 flex flex-col">
+            <div className="p-6 bg-gradient-to-br from-sht-light-blue to-white rounded-2xl shadow-sm border border-sht-blue/10 flex-1">
               <Building className="text-sht-blue mb-4" size={32} />
               <h3 className="text-xl font-semibold mb-2">Our Foundation</h3>
               <p className="text-muted-foreground">
@@ -22,7 +22,7 @@ const AboutUs = () => {
               </p>
             </div>
             
-            <div className="p-6 bg-gradient-to-br from-sht-light-blue to-white rounded-2xl shadow-sm border border-sht-blue/10 h-full">
+            <div className="p-6 bg-gradient-to-br from-sht-light-blue to-white rounded-2xl shadow-sm border border-sht-blue/10 flex-1">
               <TrendingUp className="text-sht-blue mb-4" size={32} />
               <h3 className="text-xl font-semibold mb-2">Evolution & Growth</h3>
               <p className="text-muted-foreground">
@@ -34,8 +34,8 @@ const AboutUs = () => {
             </div>
           </div>
           
-          <div className="space-y-6 h-full flex flex-col">
-            <div className="p-6 bg-gradient-to-br from-sht-light-blue to-white rounded-2xl shadow-sm border border-sht-blue/10 h-full">
+          <div className="space-y-6 flex flex-col">
+            <div className="p-6 bg-gradient-to-br from-sht-light-blue to-white rounded-2xl shadow-sm border border-sht-blue/10 flex-1">
               <Award className="text-sht-blue mb-4" size={32} />
               <h3 className="text-xl font-semibold mb-2">Our Value & Reach</h3>
               <p className="text-muted-foreground">
@@ -46,7 +46,7 @@ const AboutUs = () => {
               </p>
             </div>
             
-            <div className="p-6 bg-gradient-to-br from-sht-light-blue to-white rounded-2xl shadow-sm border border-sht-blue/10 h-full">
+            <div className="p-6 bg-gradient-to-br from-sht-light-blue to-white rounded-2xl shadow-sm border border-sht-blue/10 flex-1">
               <Lightbulb className="text-sht-blue mb-4" size={32} />
               <h3 className="text-xl font-semibold mb-2">Our Business Divisions</h3>
               <ul className="space-y-2 text-muted-foreground">
