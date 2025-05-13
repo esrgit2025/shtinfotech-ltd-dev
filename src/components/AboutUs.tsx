@@ -1,9 +1,6 @@
-
 import { Building, Award, TrendingUp, Lightbulb } from 'lucide-react';
-
 const AboutUs = () => {
-  return (
-    <section id="about" className="section-padding bg-white">
+  return <section id="about" className="section-padding bg-white">
       <div className="section-container">
         <div className="mb-12">
           <h2 className="section-title">About Us</h2>
@@ -16,7 +13,7 @@ const AboutUs = () => {
               <Building className="text-sht-blue mb-4" size={32} />
               <h3 className="text-xl font-semibold mb-2">Our Foundation</h3>
               <p className="text-muted-foreground">
-                Founded in 1987 by <span className="font-bold text-sht-blue">Mr. Emerson Irudayaraj, CEO of SHT Infotech P Ltd</span>, 
+                Founded in 1987 by <span className="font-bold text-sht-blue">Mr. I. Emerson Irudayaraj, CEO of SHT INFOTECH INDIA PRIVATE LIMITED</span>, 
                 as Sacred Heart Technologies, we began our journey by offering AMIE courses in Mechanical, Civil, EEE, and ECE, 
                 successfully nurturing over 5,000 students toward their professional goals.
               </p>
@@ -75,8 +72,6 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AboutUs;
