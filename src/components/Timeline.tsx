@@ -62,7 +62,7 @@ const Timeline = () => {
           <TimelineItem
             year="2019"
             title="Expansion into CCTV Business"
-            description="Secured major clients including over 136 SBI branches and 162 ICC branches, establishing our presence in security solutions."
+            description="Secured major clients including over 136 SBI branches and 162 ICICI branches, establishing our presence in security solutions."
             icon={Camera}
             isLeft={true}
           />
